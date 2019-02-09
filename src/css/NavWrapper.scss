@@ -1,0 +1,41 @@
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color .3s;
+}
+
+.trigger:hover {
+  color: #1890ff;
+}
+
+.logo {
+  height: 32px;
+  /* background: rgba(255,255,255,.2); */
+  margin: 16px 0;
+  color: #fff;
+}
+
+.ant-menu.custom-banner.ant-menu-dark li,
+.ant-menu.custom-banner .ant-menu-item i.anticon {
+  font-size: 20px;
+}
+
+.ant-menu.custom-side-menu.ant-menu-dark {
+  border-top: 1px solid rgb(71, 71, 71);
+}
+
+.ant-layout-header {
+  background: #fff;
+  padding: 0;
+}
+
+.ant-layout-content {
+  margin: 10px 16px;
+  padding: 20px;
+}
+
+.ant-layout-footer {
+  padding: 10px 40px;
+}

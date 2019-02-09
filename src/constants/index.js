@@ -1,0 +1,5 @@
+const CONSTANTS = {
+  FETCH_PLAYLIST_ITEMS: 'FETCH_PLAYLIST_ITEMS',
+};
+
+export default CONSTANTS;
