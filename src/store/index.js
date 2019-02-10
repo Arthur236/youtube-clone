@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import promise from 'redux-promise-middleware';
+import logger from 'redux-logger';
 
 import rootReducer from '../reducers';
 
-const middleware = [thunk, promise];
+const middleware = [thunk];
 
 const useReduxDevTools = () => {
   return window.__REDUX_DEVTOOLS_EXTENSION__
@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === 'production') {
   )(createStore);
 } else {
   createStoreWithMiddleware = compose(
-    applyMiddleware(...middleware),
+    applyMiddleware(...middleware, logger),
     useReduxDevTools()
   )(createStore);
 }

@@ -1,0 +1,23 @@
+.ant-row.category-row {
+  margin: 0 !important;
+}
+
+.ant-list {
+  .video-item {
+    img {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    h4 {
+      height: 42px;
+      overflow: hidden;
+    }
+
+    p {
+      margin: 0;
+      color: #606060;
+      font-size: 80%;
+    }
+  }
+}

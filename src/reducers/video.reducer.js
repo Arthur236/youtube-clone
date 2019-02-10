@@ -2,28 +2,28 @@ import initialState from './initialState';
 import constants from '../constants';
 
 const {
-  FETCH_PLAYLIST_ITEMS_REQUEST,
-  FETCH_PLAYLIST_ITEMS_SUCCESS,
-  FETCH_PLAYLIST_ITEMS_FAILURE,
+  FETCH_VIDEO_REQUEST,
+  FETCH_VIDEO_SUCCESS,
+  FETCH_VIDEO_FAILURE,
 } = constants;
 
-export default (state = initialState.playlistItems, action) => {
+export default (state = initialState.video, action) => {
   switch (action.type) {
-    case FETCH_PLAYLIST_ITEMS_REQUEST:
+    case FETCH_VIDEO_REQUEST:
       return {
         ...state,
         loading: true,
       };
 
-    case FETCH_PLAYLIST_ITEMS_SUCCESS:
+    case FETCH_VIDEO_SUCCESS:
       return {
         ...state,
         loading: false,
         success: true,
-        videos: action.payload,
+        video: action.payload,
       };
 
-    case FETCH_PLAYLIST_ITEMS_FAILURE:
+    case FETCH_VIDEO_FAILURE:
       return {
         ...state,
         loading: false,

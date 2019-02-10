@@ -1,43 +1,45 @@
 import React from 'react';
-import { List, Avatar } from 'antd';
+import { Link } from 'react-router-dom';
+import { List } from 'antd';
 
-class Playlist extends React.Component {
-  componentDidMount() {
-    this.props.fetchPlaylistItems('PLFWHlH4koGZBEwqtJrnBpe1pbhUNlvSTE');
-  }
+import '../css/Playlist.scss';
 
-  render() {
-    const data = [
-      {
-        title: 'Ant Design Title 1',
-      },
-      {
-        title: 'Ant Design Title 2',
-      },
-      {
-        title: 'Ant Design Title 3',
-      },
-      {
-        title: 'Ant Design Title 4',
-      },
-    ];
+const Playlist = (props) => {
+  const { videos } = props;
 
-    return(
-      <List
-        itemLayout="horizontal"
-        dataSource={data}
-        renderItem={item => (
+  let dataArray = [];
+
+  videos.map((video) => {
+    const newObject = {
+      playlistId: video.snippet.playlistId,
+      videoId: video.snippet.resourceId.videoId,
+      title: video.snippet.title,
+      description: video.snippet.description,
+      thumbnail: video.snippet.thumbnails.medium.url,
+    };
+
+    return dataArray.push(newObject);
+  });
+
+  return (
+    <List
+      className="custom-list"
+      itemLayout="horizontal"
+      dataSource={dataArray}
+      xs={24} sm={24} md={24} lg={8} xl={8}
+      renderItem={item => (
+        <Link to={`/playlists/${item.playlistId}/videos/${item.videoId}`} key={item.videoId}>
           <List.Item>
             <List.Item.Meta
-              avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-              title={<a href="https://ant.design">{item.title}</a>}
-              description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+              avatar={<img src={item.thumbnail} className="list-thumbnail" alt="thumbnail"/>}
+              title={item.title}
+              description={item.description}
             />
           </List.Item>
-        )}
-      />
-    );
-  }
-}
+        </Link>
+      )}
+    />
+  );
+};
 
 export default Playlist;
