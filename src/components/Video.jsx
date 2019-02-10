@@ -4,7 +4,7 @@ import { Avatar, List } from "antd";
 import '../css/Video.scss';
 
 const Video = (props) => {
-  const {video, videoId} = props;
+  const { video, videoId } = props;
 
   const data = [
     {
@@ -28,7 +28,7 @@ const Video = (props) => {
       <div className="video-details">
         <h2>{video.items[0].snippet.title}</h2>
         <h4>{video.items[0].statistics.viewCount} views</h4>
-        
+
         <br/>
         <hr/>
 

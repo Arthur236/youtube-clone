@@ -1,9 +1,4 @@
 export default {
-  playlistItems: {
-    loading: false,
-    success: false,
-    videos: {},
-  },
   video: {
     loading: false,
     success: false,

@@ -12,7 +12,7 @@ class CategoryVideoList extends React.Component {
   componentDidMount() {
     const { fetchCategoryVideos, categoryId, categoryName } = this.props;
 
-    fetchCategoryVideos(categoryId, categoryName);
+    fetchCategoryVideos(categoryId, categoryName, 20);
   }
 
   render() {
@@ -21,9 +21,11 @@ class CategoryVideoList extends React.Component {
     const categoryVids = categoryVideos[`${categoryName}_videos`];
 
     if (!isEmpty(categoryVids)) {
-      categoryVids.items.map((video) => {
+      const newVideoArray = categoryVids.items.slice(0, 6);
+
+      newVideoArray.map((video) => {
         const newObject = {
-          videoId: video.snippet.id,
+          videoId: video.id,
           title: video.snippet.title,
           thumbnail: video.snippet.thumbnails.medium.url,
           channelTitle: video.snippet.channelTitle,
@@ -42,7 +44,7 @@ class CategoryVideoList extends React.Component {
           }}
           dataSource={data}
           renderItem={item => (
-            <Link to={`/videos/${item.videoId}`} key={item.videoId}>
+            <Link to={`/categories/${categoryName}/videos/${item.videoId}`} key={item.videoId}>
               <List.Item>
                 <div className="video-item">
                   <img src={item.thumbnail} alt="thumbnail"/>

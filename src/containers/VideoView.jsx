@@ -1,17 +1,14 @@
 import { connect } from 'react-redux';
 
-import { fetchPlaylistItems } from '../actions/playlist.action';
+import { fetchCategoryVideos } from '../actions/categoryVideos.action';
 import { fetchVideo } from '../actions/video.action';
 
-import Home from '../components/Home';
+import VideoView from '../components/VideoView';
 
-export const mapStateToProps = ({ playlist, video }) => {
-  const { videos } = playlist;
+export const mapStateToProps = ({ categoryVideos, video }) => {
 
   return {
-    playlistLoading: playlist.loading,
-    playlistSuccess: playlist.success,
-    videos,
+    categoryVideos,
 
     videoLoading: video.loading,
     videoSuccess: video.success,
@@ -20,6 +17,6 @@ export const mapStateToProps = ({ playlist, video }) => {
 };
 
 export default connect(mapStateToProps, {
-  fetchPlaylistItems,
+  fetchCategoryVideos,
   fetchVideo
-})(Home);
+})(VideoView);

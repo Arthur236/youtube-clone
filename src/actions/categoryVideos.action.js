@@ -7,12 +7,12 @@ const {
   FETCH_CATEGORY_VIDEOS_FAILURE,
 } = constants;
 
-export const fetchCategoryVideos = (categoryId, categoryName) => (dispatch) => {
+export const fetchCategoryVideos = (categoryId, categoryName, limit) => (dispatch) => {
   const options = {
     key: process.env.REACT_APP_YOUTUBE_API_KEY,
     part: 'snippet,statistics,id',
     chart: 'mostPopular',
-    maxResults: 6,
+    maxResults: limit,
     regionCode: 'US',
     videoCategoryId: categoryId
   };

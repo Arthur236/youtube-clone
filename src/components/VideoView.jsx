@@ -4,37 +4,37 @@ import { Row, Col, Spin } from 'antd';
 
 import Nav from './NavWrapper';
 import Video from './Video';
-import Playlist from './Playlist';
+import Playlist from '../containers/Playlist';
 
 class VideoView extends React.Component {
   componentDidMount() {
-    const { match, videos } = this.props;
-    const { playlistId, videoId } = match.params;
-    const videosAvailable = (!isEmpty(videos) && videos.items);
-    const vidId = videosAvailable ? videos.items[0].snippet.resourceId.videoId : videoId;
+    const { match } = this.props;
+    const { videoId } = match.params;
 
-    console.log(vidId)
+    this.props.fetchVideo(videoId);
+  }
 
-    this.props.fetchPlaylistItems(playlistId || 'PLFWHlH4koGZBEwqtJrnBpe1pbhUNlvSTE');
-    this.props.fetchVideo(vidId || 'C9uOaDZDT-s');
+  componentDidUpdate(prevProps) {
+    console.log(this.props.match.params.videoId)
+    console.log(prevProps.match.params.videoId)
+
+    if (this.props.match.params.videoId !== prevProps.match.params.videoId) {
+      this.props.fetchVideo(this.props.match.params.videoId);
+    }
   }
 
   render() {
-    const {match, videos, video} = this.props;
-    const { videoId } = match.params;
-    const videosAvailable = (!isEmpty(videos) && videos.items);
-    const videoAvailable = (!isEmpty(video));
-    const vidId = videosAvailable ? videos.items[0].snippet.resourceId.videoId : videoId;
-
-    console.log(this.props);
+    const { match, categoryVideos, video } = this.props;
+    const { categoryName, videoId } = match.params;
+    const videosAvailable = (!isEmpty(categoryVideos));
 
     return (
       <Nav>
         <Row gutter={24}>
           <Col xs={24} sm={24} md={24} lg={16} xl={16}>
             {
-              videoAvailable ?
-                <Video videoId={vidId} video={video}/> :
+              !isEmpty(video) ?
+                <Video videoId={videoId} video={video}/> :
                 <Spin size="large"/>
             }
           </Col>
@@ -42,7 +42,10 @@ class VideoView extends React.Component {
           <Col xs={24} sm={24} md={24} lg={8} xl={8}>
             {
               videosAvailable ?
-                <Playlist videos={videos.items}/> :
+                <Playlist
+                  categoryName={categoryName}
+                  videos={categoryVideos[`${categoryName}_videos`].items}
+                /> :
                 <Spin size="large"/>
             }
           </Col>

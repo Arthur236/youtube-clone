@@ -1,5 +1,4 @@
 import React from "react";
-import { Row, Col, Spin } from 'antd';
 
 import Nav from './NavWrapper';
 import CategoryVideoList from '../containers/CategoryVideoList';
