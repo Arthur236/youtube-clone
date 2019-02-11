@@ -8,4 +8,9 @@ export default {
     loading: false,
     success: false,
   },
+  channel: {
+    loading: false,
+    success: false,
+    channel: {},
+  },
 }

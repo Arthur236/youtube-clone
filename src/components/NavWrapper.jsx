@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Layout, Menu, Icon } from 'antd';
 
 import '../css/NavWrapper.scss';
@@ -15,7 +16,7 @@ class NavWrapper extends React.Component {
     this.setState({
       collapsed: !this.state.collapsed,
     });
-  }
+  };
 
   render() {
     return (
@@ -29,7 +30,7 @@ class NavWrapper extends React.Component {
             <Menu theme="dark" mode="inline" className="custom-banner">
               <Menu.Item key="1">
                 <Icon type="youtube" />
-                <span>YouTube</span>
+                <span><Link to="/" className="side-nav-link">YouTube</Link></span>
               </Menu.Item>
             </Menu>
           </div>
@@ -37,13 +38,13 @@ class NavWrapper extends React.Component {
           <Menu theme="dark" mode="inline" className="custom-side-menu">
             <Menu.Item key="1">
               <Icon type="home" />
-              <span>Home</span>
+              <span><Link to="/" className="side-nav-link">Home</Link></span>
             </Menu.Item>
 
             <SubMenu key="sub1" title={<span><Icon type="picture" /><span>Categories</span></span>}>
-              <Menu.Item key="2">Music</Menu.Item>
-              <Menu.Item key="3">Gaming</Menu.Item>
-              <Menu.Item key="4">Science & Technology</Menu.Item>
+              <Menu.Item key="2"><Link to="/" className="side-nav-link">Music</Link></Menu.Item>
+              <Menu.Item key="3"><Link to="/" className="side-nav-link">Gaming</Link></Menu.Item>
+              <Menu.Item key="4"><Link to="/" className="side-nav-link">Science & Technology</Link></Menu.Item>
             </SubMenu>
           </Menu>
         </Sider>

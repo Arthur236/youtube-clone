@@ -12,7 +12,7 @@ class Playlist extends React.Component {
     let dataArray = [];
 
     if(!isEmpty(videos)) {
-      videos.map((video) => {
+      videos.items.map((video) => {
         const newObject = {
           videoId: video.id,
           title: video.snippet.title,
