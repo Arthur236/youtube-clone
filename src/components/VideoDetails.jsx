@@ -2,6 +2,8 @@ import React from "react";
 import { isEmpty } from 'lodash';
 import { Avatar, Col, Icon, Row, Spin } from 'antd';
 
+import Comments from "./Comments";
+
 import formatDate from '../utils/formatDate';
 import formatNumber from '../utils/numberFormat';
 
@@ -50,10 +52,11 @@ class VideoView extends React.Component {
         <hr/>
 
         <Row gutter={16}>
-          <Col span={2}>
+          <Col span={2} xs={24} sm={24}>
             {
               channelAvailable ?
                 <Avatar src={channel.channel.items[0].snippet.thumbnails.medium.url}
+                        className="channel-avatar"
                         alt="thumbnail"/> :
                 <Spin size="small"/>
             }
@@ -69,6 +72,8 @@ class VideoView extends React.Component {
         <hr/>
 
         <h4>{video.items[0].statistics.commentCount} Comments</h4>
+
+        <Comments/>
       </div>
     );
   }

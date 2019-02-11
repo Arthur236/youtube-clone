@@ -11,7 +11,7 @@ class Playlist extends React.Component {
 
     let dataArray = [];
 
-    if(!isEmpty(videos)) {
+    if (!isEmpty(videos)) {
       videos.items.map((video) => {
         const newObject = {
           videoId: video.id,
@@ -26,23 +26,27 @@ class Playlist extends React.Component {
     }
 
     return (
-      <List
-        className="custom-list"
-        itemLayout="horizontal"
-        dataSource={dataArray}
-        xs={24} sm={24} md={24} lg={8} xl={8}
-        renderItem={item => (
-          <Link to={`/categories/${categoryName}/videos/${item.videoId}`} key={item.videoId}>
-            <List.Item>
-              <List.Item.Meta
-                avatar={<img src={item.thumbnail} className="list-thumbnail" alt="thumbnail"/>}
-                title={item.title}
-                description={item.description}
-              />
-            </List.Item>
-          </Link>
-        )}
-      />
+      <React.Fragment>
+        <h4>More Videos</h4>
+
+        <List
+          className="custom-list"
+          itemLayout="horizontal"
+          dataSource={dataArray}
+          xs={24} sm={24} md={24} lg={8} xl={8}
+          renderItem={item => (
+            <Link to={`/categories/${categoryName}/videos/${item.videoId}`} key={item.videoId}>
+              <List.Item>
+                <List.Item.Meta
+                  avatar={<img src={item.thumbnail} className="list-thumbnail" alt="thumbnail"/>}
+                  title={item.title}
+                  description={item.description}
+                />
+              </List.Item>
+            </Link>
+          )}
+        />
+      </React.Fragment>
     );
   }
 }

@@ -1,0 +1,13 @@
+.comment-input-section {
+  display: inline-flex;
+  width: 100%;
+
+  .ant-avatar {
+    margin-right: 10px;
+  }
+}
+
+textarea.comment-input {
+  resize: none;
+  background: transparent;
+}
