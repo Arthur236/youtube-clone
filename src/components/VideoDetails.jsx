@@ -17,8 +17,6 @@ class VideoView extends React.Component {
   }
 
   render() {
-    console.log(this.props);
-
     const { channel, video } = this.props;
     const channelAvailable = !isEmpty(channel.channel);
 

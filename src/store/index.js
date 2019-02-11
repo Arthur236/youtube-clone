@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import logger from 'redux-logger';
 
 import rootReducer from '../reducers';
 
@@ -12,16 +11,10 @@ const useReduxDevTools = () => {
 };
 let createStoreWithMiddleware;
 
-if (process.env.NODE_ENV === 'production') {
-  createStoreWithMiddleware = compose(
-    applyMiddleware(...middleware)
-  )(createStore);
-} else {
-  createStoreWithMiddleware = compose(
-    applyMiddleware(...middleware, logger),
-    useReduxDevTools()
-  )(createStore);
-}
+createStoreWithMiddleware = compose(
+  applyMiddleware(...middleware),
+  useReduxDevTools()
+)(createStore);
 
 const store = createStoreWithMiddleware(rootReducer);
 

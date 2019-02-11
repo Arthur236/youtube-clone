@@ -66,7 +66,7 @@ class Comments extends React.Component {
       return (
         <Comment
           actions={actions}
-          author={<a>Some User</a>}
+          author={<a href="#user">Some User</a>}
           avatar={(
             <Avatar
               src="/images/avatar-1.jpg"
@@ -103,7 +103,7 @@ class Comments extends React.Component {
 
         <Comment
           actions={actions}
-          author={<a>Some User</a>}
+          author={<a href="#user">Some User</a>}
           avatar={(
             <Avatar
               src="/images/avatar-1.jpg"
@@ -122,7 +122,7 @@ class Comments extends React.Component {
 
           <Comment
             actions={actions}
-            author={<a>Another User</a>}
+            author={<a href="#user">Another User</a>}
             avatar={(
               <Avatar
                 src="/images/avatar-1.jpg"
