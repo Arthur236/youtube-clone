@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 import { List } from 'antd';
 
 import '../css/Playlist.scss';
+import numberFormat from "../utils/numberFormat";
 
 class Playlist extends React.Component {
   render() {
-    const { categoryName, videos } = this.props;
+    const { videos } = this.props;
 
     let dataArray = [];
 
@@ -35,12 +36,17 @@ class Playlist extends React.Component {
           dataSource={dataArray}
           xs={24} sm={24} md={24} lg={8} xl={8}
           renderItem={item => (
-            <Link to={`/categories/${categoryName}/videos/${item.videoId}`} key={item.videoId}>
+            <Link to={`/videos/${item.videoId}`} key={item.videoId}>
               <List.Item>
                 <List.Item.Meta
                   avatar={<img src={item.thumbnail} className="list-thumbnail" alt="thumbnail"/>}
                   title={item.title}
-                  description={item.description}
+                  description={
+                    <span>
+                      {item.channelTitle}
+                      <p>{numberFormat(item.viewCount)} views</p>
+                    </span>
+                  }
                 />
               </List.Item>
             </Link>

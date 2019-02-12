@@ -21,6 +21,7 @@ export default (state = initialState.video, action) => {
         loading: false,
         success: true,
         video: action.payload,
+        categoryId: action.payload.items[0].snippet.categoryId,
       };
 
     case FETCH_VIDEO_FAILURE:

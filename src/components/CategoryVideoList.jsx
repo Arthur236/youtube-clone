@@ -10,15 +10,15 @@ import '../css/CategoryVideoList.scss';
 
 class CategoryVideoList extends React.Component {
   componentDidMount() {
-    const { fetchCategoryVideos, categoryId, categoryName } = this.props;
+    const { fetchCategoryVideos, categoryId } = this.props;
 
-    fetchCategoryVideos(categoryId, categoryName, 20);
+    fetchCategoryVideos(categoryId, 20);
   }
 
   render() {
-    const { categoryName, categoryVideos } = this.props;
+    const { categoryId, categoryVideos } = this.props;
     const data = [];
-    const categoryVids = categoryVideos[`${categoryName}_videos`];
+    const categoryVids = categoryVideos[`${categoryId}_videos`];
 
     if (!isEmpty(categoryVids)) {
       const newVideoArray = categoryVids.items.slice(0, 6);
@@ -44,7 +44,7 @@ class CategoryVideoList extends React.Component {
           }}
           dataSource={data}
           renderItem={item => (
-            <Link to={`/categories/${categoryName}/videos/${item.videoId}`} key={item.videoId}>
+            <Link to={`/videos/${item.videoId}`} key={item.videoId}>
               <List.Item>
                 <div className="video-item">
                   <img src={item.thumbnail} alt="thumbnail"/>

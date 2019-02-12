@@ -56,7 +56,9 @@ class VideoView extends React.Component {
                 <Avatar src={channel.channel.items[0].snippet.thumbnails.medium.url}
                         className="channel-avatar"
                         alt="thumbnail"/> :
-                <Spin size="small"/>
+                <div className="loader-container">
+                  <Spin size="small"/>
+                </div>
             }
           </Col>
 

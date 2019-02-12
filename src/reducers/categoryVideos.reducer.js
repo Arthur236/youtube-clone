@@ -20,7 +20,7 @@ export default (state = initialState.categoryVideos, action) => {
         ...state,
         loading: false,
         success: true,
-        [`${action.categoryName}_videos`]: action.payload,
+        [`${action.categoryId}_videos`]: action.payload,
       };
 
     case FETCH_CATEGORY_VIDEOS_FAILURE:

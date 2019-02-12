@@ -1,3 +1,24 @@
+.nav-wrapper {
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+
+  .nav-icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+  }
+
+  .nav-avatar {
+    flex: 0 0 auto;
+    margin-right: 20px;
+
+    i.search-icon.anticon {
+      font-size: 20px;
+      margin-right: 15px;
+    }
+  }
+}
+
 .trigger {
   font-size: 18px;
   line-height: 64px;
@@ -18,11 +39,7 @@
 
 .header-logo {
   font-size: 20px;
-}
-
-.nav-avatar {
-  float: right;
-  margin-right: 20px;
+  overflow: hidden;
 }
 
 .side-nav-link {
@@ -50,4 +67,25 @@
 
 .ant-layout-footer {
   padding: 10px 40px;
+}
+
+.ant-drawer.search-drawer {
+  .ant-drawer-content-wrapper {
+    height: initial !important;
+
+    .ant-drawer-body {
+      text-align: center;
+    }
+
+    .search-input {
+      width: 70%;
+    }
+  }
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
 }

@@ -3,6 +3,7 @@ export default {
     loading: false,
     success: false,
     video: {},
+    categoryId: '',
   },
   categoryVideos: {
     loading: false,
@@ -12,5 +13,12 @@ export default {
     loading: false,
     success: false,
     channel: {},
+  },
+  search: {
+    loading: false,
+    nextPageToken: '',
+    pageInfo: {},
+    success: false,
+    searchResults: [],
   },
 }

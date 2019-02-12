@@ -7,7 +7,7 @@ const {
   FETCH_CATEGORY_VIDEOS_FAILURE,
 } = constants;
 
-export const fetchCategoryVideos = (categoryId, categoryName, limit) => (dispatch) => {
+export const fetchCategoryVideos = (categoryId, limit) => (dispatch) => {
   const options = {
     key: process.env.REACT_APP_YOUTUBE_API_KEY,
     part: 'snippet,statistics,id',
@@ -17,28 +17,28 @@ export const fetchCategoryVideos = (categoryId, categoryName, limit) => (dispatc
     videoCategoryId: categoryId
   };
 
-  dispatch(fetchCategoryRequest(categoryName));
+  dispatch(fetchCategoryRequest(categoryId));
 
   return axios.get('videos', {params: options}).then((response) => {
-    dispatch(fetchCategorySuccess(response.data, categoryName));
+    dispatch(fetchCategorySuccess(response.data, categoryId));
   }).catch((error) => {
-    dispatch(fetchCategoryFail(error, categoryName));
+    dispatch(fetchCategoryFail(error, categoryId));
   });
 };
 
-export const fetchCategoryRequest = (categoryName) => ({
+export const fetchCategoryRequest = (categoryId) => ({
   type: FETCH_CATEGORY_VIDEOS_REQUEST,
-  categoryName
+  categoryId
 });
 
-export const fetchCategorySuccess = (videos, categoryName) => ({
+export const fetchCategorySuccess = (videos, categoryId) => ({
   type: FETCH_CATEGORY_VIDEOS_SUCCESS,
   payload: videos,
-  categoryName
+  categoryId
 });
 
-export const fetchCategoryFail = (error, categoryName) => ({
+export const fetchCategoryFail = (error, categoryId) => ({
   type: FETCH_CATEGORY_VIDEOS_FAILURE,
   payload: error,
-  categoryName
+  categoryId
 });

@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import { Layout, Menu, Icon, Avatar } from 'antd';
 
 import '../css/NavWrapper.scss';
+import SearchDrawer from "./SearchDrawer";
 
 const { Content, Footer, Header, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
 class NavWrapper extends React.Component {
   state = {
-    collapsed: false,
+    collapsed: true,
   };
 
   toggle = () => {
@@ -51,21 +52,29 @@ class NavWrapper extends React.Component {
 
         <Layout>
           <Header>
-            <Icon
-              className="trigger"
-              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-              onClick={this.toggle}
-            />
+            <div className="nav-wrapper">
+              <div className="nav-icon">
+                <Icon
+                  className="trigger"
+                  type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+                  onClick={this.toggle}
+                />
 
-            <Icon type='youtube' className='header-logo'/> &nbsp;
-            <span className='header-logo'>YouTube</span>
+                <div className="header-logo">
+                  <Icon type="youtube"/> &nbsp;
+                  <span>YouTube</span>
+                </div>
+              </div>
 
-            <span className="nav-avatar">
-              <Avatar
-                src="/images/avatar-1.jpg"
-                alt="avatar"
-              />
-            </span>
+              <div className="nav-avatar">
+                <SearchDrawer/>
+
+                <Avatar
+                  src="/images/avatar-1.jpg"
+                  alt="avatar"
+                />
+              </div>
+            </div>
           </Header>
 
           <Content>

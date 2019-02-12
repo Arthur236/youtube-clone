@@ -8,17 +8,17 @@ class Home extends React.Component {
     return (
       <Nav>
         <h3>Music</h3>
-        <CategoryVideoList categoryId={'10'} categoryName={'music'} />
+        <CategoryVideoList categoryId={'10'} />
 
         <hr/>
 
         <h3>Gaming</h3>
-        <CategoryVideoList categoryId={'20'} categoryName={'gaming'} />
+        <CategoryVideoList categoryId={'20'} />
 
         <hr/>
 
         <h3>Science & Technology</h3>
-        <CategoryVideoList categoryId={'28'} categoryName={'science'} />
+        <CategoryVideoList categoryId={'28'} />
       </Nav>
     );
   }

@@ -4,4 +4,12 @@
   .list-thumbnail {
     height: 70px;
   }
+
+  .ant-list-item-meta-description {
+    span {
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
 }

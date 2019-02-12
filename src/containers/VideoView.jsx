@@ -12,7 +12,8 @@ export const mapStateToProps = ({ categoryVideos, video }) => {
 
     videoLoading: video.loading,
     videoSuccess: video.success,
-    video: video.video
+    video: video.video,
+    categoryId: video.categoryId,
   };
 };
 

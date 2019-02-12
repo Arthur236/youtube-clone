@@ -8,28 +8,36 @@ import Playlist from '../containers/Playlist';
 
 class VideoView extends React.Component {
   componentDidMount() {
-    const { match, categoryId, categoryVideos, fetchCategoryVideos } = this.props;
-    const { categoryName, videoId } = match.params;
+    const { match, categoryVideos, fetchCategoryVideos, video } = this.props;
+    const { videoId } = match.params;
 
-    this.props.fetchVideo(videoId);
+    this.props.fetchVideo(videoId).then(() => {
+      const { categoryId } = this.props;
 
-    if (categoryVideos[`${categoryName}_videos`] === undefined) {
-      fetchCategoryVideos(categoryId, categoryName, 20);
-    }
+      if (categoryVideos[`${categoryId}_videos`] === undefined) {
+        const catId = !isEmpty(video) ? video.items[0].snippet.categoryId : categoryId;
+
+        fetchCategoryVideos(catId, 20);
+      }
+    });
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.match.params.videoId !== prevProps.match.params.videoId) {
-      this.props.fetchVideo(this.props.match.params.videoId);
+    const { match } = this.props;
+    const { videoId } = match.params;
+
+    if (videoId !== prevProps.match.params.videoId) {
+      this.props.fetchVideo(videoId);
     }
   }
 
   render() {
     const { match, categoryVideos, video } = this.props;
-    const { categoryName, videoId } = match.params;
+    const { videoId } = match.params;
 
-    const videosAvailable = (!isEmpty(categoryVideos) && categoryVideos[`${categoryName}_videos`]);
     const videoAvailable = !isEmpty(video);
+
+    const videosAvailable = !isEmpty(categoryVideos) && videoAvailable && categoryVideos[`${video.items[0].snippet.categoryId}_videos`];
 
     return (
       <Nav>
@@ -42,7 +50,9 @@ class VideoView extends React.Component {
                   video={video}
                   channelId={video.items[0].snippet.channelId}
                 /> :
-                <Spin size="large"/>
+                <div className="loader-container">
+                  <Spin size="large"/>
+                </div>
             }
           </Col>
 
@@ -50,10 +60,12 @@ class VideoView extends React.Component {
             {
               videosAvailable ?
                 <Playlist
-                  categoryName={categoryName}
-                  videos={categoryVideos[`${categoryName}_videos`]}
+                  categoryId={video.items[0].snippet.categoryId}
+                  videos={categoryVideos[`${video.items[0].snippet.categoryId}_videos`]}
                 /> :
-                <Spin size="large"/>
+                <div className="loader-container">
+                  <Spin size="large"/>
+                </div>
             }
           </Col>
         </Row>
